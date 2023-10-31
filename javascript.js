@@ -5,21 +5,23 @@ function getComputerChoice () {
     return choice[ran];
    
 }
+compChoice = getComputerChoice();
+console.log(compChoice);
 
-console.log(getComputerChoice());
-
-let x = false;
+function getPlayerChoice () {
+    let x = false;
 let t = "nothing"
 while(x === false) {
      t  = prompt("welcome to rock paper scissors! enter rock, paper, or scissors to play!") 
      t = t.toLowerCase();
      if(t === "rock" || t === "scissors" || t === "paper") {
         x = true;
-     }
-  
-
+     }  
+     
 }
-console.log(t);
+        return t;
+}
+
 
 function GameRound(ti, ran) {
     if (ti === ran) {
@@ -45,3 +47,31 @@ function GameRound(ti, ran) {
     }
 
 }
+
+
+function game(){
+    let playScore = 0;
+    let compScore = 0;
+    let holder = "-1"
+    while(playScore !== 3 &&  compScore !== 3){
+        holder = GameRound(getPlayerChoice(), getComputerChoice());
+        console.log(holder);
+        if(holder.search("Tie") != -1) {
+
+        }
+        else if(holder.search("Lose") == -1){
+            playScore = ++playScore;
+        }
+        else {
+            compScore = ++compScore;
+        }
+    }
+    if(playScore ===  3){
+        console.log("YOU WON THE ENTIRE GAME");
+    }
+    else {
+        console.log("You lost better luck next time!");
+    }
+}
+
+game();
